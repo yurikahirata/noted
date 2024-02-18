@@ -11,5 +11,5 @@ try {
   console.error(e);
 }
 
-let db = conn.db("users");
+let db = conn.db("noted");
 export default db;
