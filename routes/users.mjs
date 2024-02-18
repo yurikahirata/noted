@@ -1,18 +1,10 @@
 import express from "express";
-import db from "../db/conn.mjs";
-import { ObjectId } from "mongodb";
+import usersController from "../controllers/users.controller.mjs";
 
 const router = express.Router();
 
-// Get list of 50 users
-router.get("/", async (req, res) => {
-  console.log("Connected to mongodb");
-  let collection = await db.collection("users");
-  let results = await collection.find({})
-    .limit(50)
-    .toArray();
-
-  res.send(results).status(200);
-});
+// USER ROUTES
+router.get("/", usersController.getAll); // Get list of 50 users
+router.post("/", usersController.signup); // Create new user
 
 export default router;
