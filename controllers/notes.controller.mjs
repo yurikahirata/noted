@@ -15,6 +15,13 @@ const notesController = {
     }
   },
 
+  update: async function (req, res) {
+    const id = req.params.id;
+    const entry = req.body;
+    let result = await notesModel.update(id, entry);
+    res.status(200).send(result);
+  },
+
   delete: async function (req, res) {
     const id = req.params.id;
     let result = await notesModel.delete(id);

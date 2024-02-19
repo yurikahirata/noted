@@ -7,5 +7,6 @@ const router = express.Router();
 router.get("/:username/unsorted", notesController.getUnsortedByUsername);
 router.post("/", notesController.insert); // Create new note
 router.delete("/:id", notesController.delete) // Authenticate user
+router.patch("/:id", notesController.update);
 
 export default router;

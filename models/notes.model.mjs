@@ -12,7 +12,14 @@ const notesModel = {
     let collection = await db.collection("notes");
     const objectId = new ObjectId(id);
     const condition = { "_id": objectId };
-    let result = await collection.deleteOne(condition);
+    const result = await collection.deleteOne(condition);
+    return result;
+  },
+
+  update: async function (id, entry) {
+    let collection = await db.collection("notes");
+    const objectId = new ObjectId(id);
+    const result = await collection.updateOne({ "_id": objectId }, { $set: entry });
     return result;
   },
 
