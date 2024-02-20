@@ -31,9 +31,10 @@ const notesController = {
       res.status(500).send("Something went wrong");
   },
 
-  getUnsortedByUsername: async function (req, res) {
+  getNotesByUsernameAndCollection: async function (req, res) {
     const username = req.params.username;
-    let results = await notesModel.getUnsortedNotesByUsername(username);
+    const collection = req.params.collection;
+    let results = await notesModel.getNotesByUsernameAndCollection(username, collection);
     res.status(200).send(results);
   }
 }

@@ -23,9 +23,9 @@ const notesModel = {
     return result;
   },
 
-  getUnsortedNotesByUsername: async function (username) {
-    let collection = await db.collection("notes");
-    let result = await collection.find({ username: username, collection: "unsorted" }).toArray();
+  getNotesByUsernameAndCollection: async function (username, collection) {
+    let dbCollection = await db.collection("notes");
+    let result = await dbCollection.find({ username: username, collection: collection }).toArray();
     return result;
   }
 }
