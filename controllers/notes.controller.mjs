@@ -36,6 +36,27 @@ const notesController = {
     const collection = req.params.collection;
     let results = await notesModel.getNotesByUsernameAndCollection(username, collection);
     res.status(200).send(results);
+  },
+
+  deleteByUsernameAndCollection: async function (req, res) {
+    const username = req.params.username;
+    const collection = req.params.collection;
+    let result = await notesModel.deleteByUsernameAndCollection(username, collection);
+    if (result.acknowledged === true)
+      res.status(200).send(result);
+    else
+      res.status(500).send("Something went wrong");
+  },
+
+  editByUsernameAndCollection: async function (req, res) {
+    const username = req.params.username;
+    const collection = req.params.collection;
+    const toEdit = req.body;
+    let result = await notesModel.editByUsernameAndCollection(username, collection, toEdit);
+    if (result.acknowledged === true)
+      res.status(200).send(result);
+    else
+      res.status(500).send("Something went wrong");
   }
 }
 
