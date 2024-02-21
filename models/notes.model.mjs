@@ -34,6 +34,14 @@ const notesModel = {
     const condition = { "username": username, "collection": collection };
     const result = dbCollection.deleteMany(condition);
     return result;
+  },
+
+  editByUsernameAndCollection: async function (username, collection, toEdit) {
+    let dbCollection = await db.collection("notes");
+    const condition = { "username": username, "collection": collection };
+    const updateTo = { $set: toEdit };
+    const result = dbCollection.updateMany(condition, updateTo);
+    return result;
   }
 }
 
