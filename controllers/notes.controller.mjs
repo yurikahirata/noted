@@ -36,6 +36,16 @@ const notesController = {
     const collection = req.params.collection;
     let results = await notesModel.getNotesByUsernameAndCollection(username, collection);
     res.status(200).send(results);
+  },
+
+  deleteByUsernameAndCollection: async function (req, res) {
+    const username = req.params.username;
+    const collection = req.params.collection;
+    let result = await notesModel.deleteByUsernameAndCollection(username, collection);
+    if (result.acknowledged === true)
+      res.status(200).send(result);
+    else
+      res.status(500).send("Something went wrong");
   }
 }
 

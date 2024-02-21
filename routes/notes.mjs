@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/:username/:collection", notesController.getNotesByUsernameAndCollection); // All unsorted notes by username
 router.post("/", notesController.insert); // Create new note
 router.delete("/:id", notesController.delete) // Delete note
+router.delete("/:username/:collection", notesController.deleteByUsernameAndCollection);
 router.patch("/:id", notesController.update); // Update note
 
 export default router;

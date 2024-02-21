@@ -27,6 +27,13 @@ const notesModel = {
     let dbCollection = await db.collection("notes");
     let result = await dbCollection.find({ username: username, collection: collection }).toArray();
     return result;
+  },
+
+  deleteByUsernameAndCollection: async function (username, collection) {
+    let dbCollection = await db.collection("notes");
+    const condition = { "username": username, "collection": collection };
+    const result = dbCollection.deleteMany(condition);
+    return result;
   }
 }
 
