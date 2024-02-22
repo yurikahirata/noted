@@ -32,7 +32,7 @@ const collectionsController = {
   },
 
   getCollectionsByUsername: async function (req, res) {
-    const username = req.params.username;
+    const username = req.body["username"];
     let results = await collectionsModel.getCollectionsByUsername(username);
     res.status(200).send(results);
   }
