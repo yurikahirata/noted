@@ -32,7 +32,7 @@ const notesController = {
   },
 
   getNotesByUsernameAndCollection: async function (req, res) {
-    const username = req.params.username;
+    const username = req.body["username"];
     const collection = req.params.collection;
     let results = await notesModel.getNotesByUsernameAndCollection(username, collection);
     res.status(200).send(results);
@@ -49,9 +49,10 @@ const notesController = {
   },
 
   editByUsernameAndCollection: async function (req, res) {
-    const username = req.params.username;
+    const username = req.body["username"];
     const collection = req.params.collection;
-    const toEdit = req.body;
+    const toEdit = {};
+    toEdit["collection"] = req.body["collection"];
     let result = await notesModel.editByUsernameAndCollection(username, collection, toEdit);
     if (result.acknowledged === true)
       res.status(200).send(result);
