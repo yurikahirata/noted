@@ -3,7 +3,7 @@ import notesController from "../controllers/notes.controller.mjs";
 
 const router = express.Router();
 
-// USER ROUTES
+// NOTES ROUTES
 router.post("/username/:collection", notesController.getNotesByUsernameAndCollection); // Get notes by username and collection
 router.post("/", notesController.insert); // Create new note
 router.delete("/:id", notesController.delete) // Delete note

@@ -1,13 +1,12 @@
 import express from "express";
 import collectionsController from "../controllers/collections.controller.mjs";
-// import notesController from "../controllers/notes.controller.mjs";
 
 const router = express.Router();
 
-// USER ROUTES
-router.post("/username", collectionsController.getCollectionsByUsername); // All collection by username
-router.post("/", collectionsController.insert); // Create new folder
-router.delete("/:id", collectionsController.delete) // Delete folder
-router.patch("/:id", collectionsController.update); // Update folder
+// COLLECTIONS ROUTES
+router.post("/username", collectionsController.getCollectionsByUsername); // All collections by username
+router.post("/", collectionsController.insert); // Create new collection
+router.delete("/:id", collectionsController.delete) // Delete collection
+router.patch("/:id", collectionsController.update); // Update collection
 
 export default router;

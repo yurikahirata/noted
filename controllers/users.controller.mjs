@@ -4,10 +4,6 @@ import bcrypt from "bcrypt";
 const saltRounds = 10;
 
 const usersController = {
-  getAll: async function (req, res) {
-    let results = await usersModel.getAll();
-    res.send(results).status(200);
-  },
 
   signup: async function (req, res) {
     if (!validateUser(req.body))
